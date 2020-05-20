@@ -1,6 +1,8 @@
 # Javascript III
 
-## Conceitos básicos
+## Métodos de Array
+- map / reduce / filter / foreach
+
 ## Protocolo HTTP
 - [Uma visão geral do HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview);
 
@@ -37,7 +39,7 @@ Por exemplo, ao chamar um script, uma folha de estilo ou uma imagem, é feita um
 - [HTTP Dogs](https://httpstatusdogs.com/)
 - [HTTP Cats](https://http.cat/)
 
-### JSON
+## JSON
 JSON é a abreviação de JavaScript Object Notation ou Notação de Objeto Javascript. É uma sintaxe para armazenar e tranferir dados. Trata-se de uma **string** que se parece bastante com um **objeto** Javascript.
 
 ```json
@@ -57,24 +59,65 @@ JSON é a abreviação de JavaScript Object Notation ou Notação de Objeto Java
 
 Nota-se que as propriedades, no JSON, necessariamente tem que estar entre `""`.
 
-#### JSON.parse()
+### JSON.parse(data)
 - Manipulando dados no formato json (conversão / navegação pela estrutura)
 
 
 ## API
-[Open APIs](https://github.com/public-apis/public-apis)
-- Conceito de API
-- Acessando dados de APIs
-- O que é CORS?
+- [Open APIs](https://github.com/public-apis/public-apis);
+- [What is an API? [Vídeo em inglês]](https://www.youtube.com/watch?v=s7wmiS2mSXY);
+- [O que significa API e como ela funciona](https://www.redhat.com/pt-br/topics/api/what-are-application-programming-interfaces)
+
+API é a abreviação de _Application Programming Interface_, ou em português, Interface de Programação de Aplicativos. Trata-se de uma interface de comunicação e integração entre aplicações.
+
+Por exemplo, para usar dados do Maps, o Google desenvolveu uma API para ser consumida entre desenvolvedoras.
+
+Cada API possui uma documentação e modo de comunicação, quais informações (headers e body) enviar para a API para conseguir ter acesso a seus dados. Algumas delas permitem que seja feita alteração de dados e não somente consulta.
+
+Alguns verbos, métodos, que são usados:
+
+Método | O que faz        | Status de retorno |
+-------|------------------|-------------------|
+GET    | Traz informações | 200               |
+POST   | Cria um novo item| 201               |
+PUT    | Atualiza um item | 200               |
+DELETE | Remove um item   | 200               |
+
+- [O que é REST API](https://rockcontent.com/blog/rest-api/);
+- [RESTful API (REST API) - inglês](https://searchapparchitecture.techtarget.com/definition/RESTful-API);
+
+É possível também se deparar com a nomenclatura **REST API**. É uma abreviação para _Representational State Transfer_, ou em português, Transferência de Estado Representacional.
+
+Trata-se de uma arquitetura em que uma API é construída, seguindo determinadas práticas, usando os verbos existentes do protocolo HTTP. É como se fosse um método BEM para APIs. É possível fazer um estilo CSS sem seguir o método, mas pode ser vire uma bagunça e não seja intuitivo. A arquitetura REST API faz com que o consumo das APIs sejam mais intutivos e organizados.
 
 
-## Métodos de Array
-- map / reduce / filter / foreach
+### Acessando dados de APIs
+- [JSON Placeholder](https://jsonplaceholder.typicode.com/guide.html);
+
+Para acessar uma API, via de regra, basta acessarmos sua URL em um navegador. Ela nos retorna o dado designado a esse caminho, normalmente um JSON.
+
+Acessando a partir do navegador, estamos fazendo uma requisição `GET`. Para fazer requisição com outros verbos (`POST`, por exemplo), temos que usar outras ferramentas. Veja a seção Requisições.
+
+### O que é CORS?
+
+- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Controle_Acesso_CORS);
+
+Quando se faz uma requisição para um recurso externo, por padrão, o cliente (navegador) bloqueia se as origens são diferentes. O servidor deve, então, permitir o acesso de origens distintas. O CORS, ou Compartilhamento de Recursos de Origem Diferente, vem como mecanismo para permitir o acesso desses recursos.
+
+Não são todos os recursos que necessitam de CORS. Alguns exemplos:
+- Requisições com `XMLHttpRequest` e `fetch`;
+- Fontes web.
+
+É importante notar que é um problema que deve ser resolvido no lado do **servidor**.
+
 
 ## Requisições
 - XMLHttpRequest
-- Promises
-- async e await
+
+### Promises
+Promise é um objeto que representa o sucesso ou fracasso de uma operação **assíncrona**. 
+
 - Fetch
+- async e await
 
 ## Autenticação

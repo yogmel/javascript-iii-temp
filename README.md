@@ -102,6 +102,7 @@ Acessando a partir do navegador, estamos fazendo uma requisição `GET`. Para fa
 ### O que é CORS?
 
 - [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Controle_Acesso_CORS);
+- [3 Ways to Fix the CORS Error - artigo em inglês](https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9);
 
 Quando se faz uma requisição para um recurso externo, por padrão, o cliente (navegador) bloqueia se as origens são diferentes. O servidor deve, então, permitir o acesso de origens distintas. O CORS, ou Compartilhamento de Recursos de Origem Diferente, vem como mecanismo para permitir o acesso desses recursos.
 
@@ -213,7 +214,40 @@ promise
   });
 ```
 
-- Fetch
-- async e await
+### Fetch
 
-## Autenticação
+- [Fetch()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch);
+É um método recentemente introduzido e ainda fase experimental. É usado para transferências de dados entre recursos web. O `fetch()` retorna uma `Promise`.
+
+
+### Anatomia de fetch()
+
+Para realizar uma requisição `GET`, sem informações adicionais:
+
+```javascript
+fetch(url)
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .catch(erro => console.log(erro));
+}
+```
+
+Opcionalmente, é possível adicionar [informações da requisição](#anatomia-de-uma-requisição-http), como segundo parâmetro, por meio de um objeto.
+
+```javascript
+fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'image/jpeg'
+    }
+    mode: 'cors',
+    cache: 'default'
+  })
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .catch(erro => console.log(erro));
+}
+```
+
+### async e await
+

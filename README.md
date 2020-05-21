@@ -2,6 +2,8 @@
 
 ## Métodos de Array
 
+![Imagem exemplificando o uso dos métodos map, filter e reduce. No map, milho, com a função cozinhar, se tranforma em pipoca. No filter, entre pipoca, hamburger e ovo, com a função "É vegetariano?" é retornado apenas a pipoca e o ovo. No reduce, pipoca e ovo, com a função "comer", no final se transformam em cocô](./img/map-filter-reduce.jpeg);
+
 **Principais Métodos**
 * [**concat**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) faz cópia simples do Array e adiciona os argumentos 
 * [**join**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) cria um string do Array. Adiciona o argumento como cola entre cada membro do Array. 
@@ -55,40 +57,12 @@ Por exemplo, ao chamar um script, uma folha de estilo ou uma imagem, é feita um
 - Cabeçalhos (_header_) com informações vindas do servidor;
 - Corpo (_body_) com dados solicitados, se houver.
 
-
 **Código de Status das Respostas**
 - [HTTP Statuses](https://httpstatuses.com/)
 - [HTTP Dogs](https://httpstatusdogs.com/)
 - [HTTP Cats](https://http.cat/)
 
-## JSON
-JSON é a abreviação de JavaScript Object Notation ou Notação de Objeto Javascript. É uma sintaxe para armazenar e tranferir dados. Trata-se de uma **string** que se parece bastante com um **objeto** Javascript.
-
-```json
-[
-  {
-    "nome": "Mellina",
-    "idade": 21,
-    "profissão": "desenvolvedora"
-  },
-  {
-    "nome": "Joana",
-    "idade": 12,
-    "profissão": "criança"
-  }
-]
-```
-
-Nota-se que as propriedades, no JSON, necessariamente tem que estar entre `""`.
-
-### JSON.parse(data)
-- [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse);
-
-O método `JSON.parse(data)` transforma a `data` string do JSON em um objeto Javascript para ser manipulado e o retorna.
-
-```javascript
-const parsedData = JSON.parse(data);
-```
+----------------
 
 ## API
 - [Open APIs](https://github.com/public-apis/public-apis);
@@ -137,6 +111,38 @@ Não são todos os recursos que necessitam de CORS. Alguns exemplos:
 
 É importante notar que é um problema que deve ser resolvido no lado do **servidor**.
 
+----------------
+
+## JSON
+JSON é a abreviação de JavaScript Object Notation ou Notação de Objeto Javascript. É uma sintaxe para armazenar e tranferir dados. Trata-se de uma **string** que se parece bastante com um **objeto** Javascript.
+
+```json
+[
+  {
+    "nome": "Mellina",
+    "idade": 21,
+    "profissão": "desenvolvedora"
+  },
+  {
+    "nome": "Joana",
+    "idade": 12,
+    "profissão": "criança"
+  }
+]
+```
+
+Nota-se que as propriedades, no JSON, necessariamente tem que estar entre `""`.
+
+### JSON.parse(data)
+- [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse);
+
+O método `JSON.parse(data)` transforma a `data` string do JSON em um objeto Javascript para ser manipulado e o retorna.
+
+```javascript
+const parsedData = JSON.parse(data);
+```
+
+----------------
 
 ## Requisições
 ## XMLHttpRequest
@@ -172,7 +178,40 @@ request.send();
 ```
 
 ### Promises
-Promise é um objeto que representa o sucesso ou fracasso de uma operação **assíncrona**. 
+
+- [Promises](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise);
+- [Usando Promises](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises);
+- [Callback Hell to Async and Await - artigo em inglês](https://blog.hellojs.org/asynchronous-javascript-from-callback-hell-to-async-and-await-9b9ceb63c8e8);
+
+Promise é um objeto que representa o sucesso ou fracasso de uma operação **assíncrona**. Elas são bastante usadas dentro de outras estruturas apresentadas no ES6.
+
+#### Anatomia de Promise
+
+- [Promise() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise);
+
+Para criar uma nova Promise, é necessário usar a palavra-chave `new`. Existe um construtor nativo e ele retorna o objeto `Promise`.
+
+O callback (executor) da `Promise` recebe dois parâmetros: _resolve_ e _reject_. Esses parâmetros são funções geradas pelo construtor
+
+Depois disso, é possível usar os métodos `then()` e `catch()`. Ambos recebem callbacks que são executados quando há uma resolução ou rejeição da `Promise`.
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  if (condicao) {
+    resolve("resolvido!"); // dado é retornado para o then
+  } else {
+    reject("aaahh errooou"); // entra no catch
+  }
+});
+
+promise
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
 
 - Fetch
 - async e await
